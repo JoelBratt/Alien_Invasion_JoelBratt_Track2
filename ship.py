@@ -1,3 +1,9 @@
+"""ship.py
+Joel Bratt
+Ship update, draw and shooting, as well as centering the ship.
+Code from the end of following the tutorial
+7/23/2026
+"""
 import pygame
 from typing import TYPE_CHECKING
 

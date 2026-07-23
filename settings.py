@@ -1,3 +1,9 @@
+"""settings.py
+Joel Bratt
+Settings has core game settings like fps and screen dimensions"
+Code from the end of following the tutorial
+7/23/2026
+"""
 from pathlib import Path
 class Settings:
     def __init__(self):

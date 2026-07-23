@@ -1,3 +1,9 @@
+"""button.py
+Joel Bratt
+Checks if start button is clicked and draws the start button as well.
+Code from the end of following the tutorial
+7/23/2026
+"""
 import pygame.font
 from typing import TYPE_CHECKING
 

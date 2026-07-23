@@ -1,3 +1,9 @@
+"""bullet.py
+Joel Bratt
+Updating and drawing the bullet and takes bullet and screen information from settings
+Code from the end of following the tutorial
+7/23/2026
+"""
 import pygame
 from pygame.sprite import Sprite
 from typing import TYPE_CHECKING

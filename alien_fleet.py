@@ -1,3 +1,9 @@
+"""alien_fleet.py
+Joel Bratt
+The fleet for the aliens
+Code from the end of following the tutorial
+7/23/2026
+"""
 import pygame
 from alien import Alien
 from typing import TYPE_CHECKING

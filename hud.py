@@ -1,3 +1,9 @@
+"""hud.py
+Joel Bratt
+Creates the hud which is is displayed in game. uses the different chosen font.
+Code from the end of following the tutorial
+7/23/2026
+"""
 import pygame.font
 #from alien_invasion import AlienInvasion
 #from typing import TYPE_CHECKING

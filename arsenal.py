@@ -1,3 +1,9 @@
+"""arsenal.py
+Joel Bratt
+Contains the aresenal and when the bullet is getting removed
+Code from the end of following the tutorial
+7/23/2026
+"""
 import pygame
 from bullet import Bullet
 from typing import TYPE_CHECKING

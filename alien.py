@@ -1,3 +1,9 @@
+"""alien.py
+Joel Bratt
+Makes the ailen sprite and updates it
+Code from the end of following the tutorial
+7/23/2026
+"""
 import pygame
 from pygame.sprite import Sprite
 from typing import TYPE_CHECKING

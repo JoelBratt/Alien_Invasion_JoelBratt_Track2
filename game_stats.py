@@ -1,3 +1,9 @@
+"""game_stats.py
+Joel Bratt
+Tracks the scores and saves them to the json contains score formula
+Code from the end of following the tutorial
+7/23/2026
+"""
 from pathlib import Path
 import json
 import math

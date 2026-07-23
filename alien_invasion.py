@@ -1,3 +1,9 @@
+"""alien_invasion.py
+Joel Bratt
+Main Game Section of Alien Invasion
+Code from the end of following the tutorial
+7/23/2026
+"""
 import sys
 import pygame
 from settings import Settings
