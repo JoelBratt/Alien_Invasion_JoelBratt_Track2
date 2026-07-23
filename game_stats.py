@@ -67,17 +67,17 @@ class GameStats():
 
 
     def _update_hi_score(self):
-        """updates hi score when base score becomes larger than it."""
+        """Updates hi score when base score becomes larger than it."""
         if self.score > self.hi_score:
             self.hi_score = self.score
             #print(f'hi: {self.hi_score}')
 
     def _update_score(self, collisions):
-        """calculates the score for the aliens being destroyed"""
+        """Calculates the score for the aliens being destroyed."""
         for alien in collisions.values():
             self.score += math.ceil(self.settings.alien_points ** (1 + self.level/4))
             #print(f'Basic: {self.score}')
 
     def update_level(self):
-        """increases level"""
+        """Increases level."""
         self.level += 1
