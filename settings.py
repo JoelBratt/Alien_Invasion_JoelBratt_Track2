@@ -19,11 +19,13 @@ class Settings:
         self.ship_w = 40
         self.ship_h = 60
 
+        #All custom assets created by me
         self.bullet_file = Path.cwd() / 'Assets' / 'images' / 'BlastReplace.png'
         self.laser_sound = Path.cwd() / 'Assets' / 'sound' / 'laser2.mp3'
         self.impact_sound = Path.cwd() / 'Assets' / 'sound' / 'impactSound2.mp3'
-        self.soundtrack = Path.cwd() / 'Assets' / 'sound' / 'soundtrack.mp3'
         self.gameover = Path.cwd() / 'Assets' / 'sound' / 'gameover.mp3'
+        #soundtrack desgined by FlipXin
+        self.soundtrack = Path.cwd() / 'Assets' / 'sound' / 'soundtrack.mp3'
 
         self.alien_file = Path.cwd() / 'Assets' / 'images' / 'Alien1.png'
         self.alien_w = 40
@@ -35,9 +37,12 @@ class Settings:
         self.button = Path.cwd() / 'Assets' / 'images' / 'playbutton.png'
 
         self.text_color = (255,255,255)
+        self.hud_outline_color = (255, 0, 0)
         self.button_font_size = (48)
         self.HUD_font_size = 22
+        #font from https://fonts.google.com/specimen/Quantico?preview.script=Latn designed by MADType
         self.font_file = Path.cwd() / 'Assets' / 'Fonts' / 'Quantico' / 'Quantico-Bold.ttf'
+
 
     def initialize_dynamic_settings(self):
         self.ship_speed = 10

@@ -5,6 +5,7 @@ Code from the end of following the tutorial
 7/23/2026
 """
 import pygame.font
+import pygame
 #from alien_invasion import AlienInvasion
 #from typing import TYPE_CHECKING
 
@@ -44,8 +45,9 @@ class HUD:
     def _update_score(self):
         """Turn the score into a rendered image."""
         score_str = f'Score: {self.game_stats.score: ,.0f}'
-        self.score_image = self.font.render(score_str, True, 
-            self.settings.text_color, None)
+        self.score_image = self.render_text_with_outline(
+            score_str, self.font, self.settings.text_color, self.settings.hud_outline_color
+        )
         self.score_rect = self.score_image.get_rect()
         self.score_rect.right = self.bounds.right - self.padding
         self.score_rect.top = self.score_rect.bottom + self.padding
@@ -53,8 +55,9 @@ class HUD:
     def _update_max_score(self):
         """Turn the max score into a rendered image."""
         max_score_str = f'Max-Score: {self.game_stats.max_score: ,.0f}'
-        self.max_score_image = self.font.render(max_score_str, True, 
-            self.settings.text_color, None)
+        self.max_score_image = self.render_text_with_outline(
+            max_score_str, self.font, self.settings.text_color, self.settings.hud_outline_color
+        )
         self.max_score_rect = self.max_score_image.get_rect()
         self.max_score_rect.right = self.bounds.right - self.padding
         self.max_score_rect.top = self.padding
@@ -62,16 +65,18 @@ class HUD:
     def _update_hi_score(self):
         """Turn the hi score into a rendered image."""
         hi_score_str = f'Hi-Score: {self.game_stats.hi_score: ,.0f}'
-        self.hi_score_image = self.font.render(hi_score_str, True, 
-            self.settings.text_color, None)
+        self.hi_score_image = self.render_text_with_outline(
+            hi_score_str, self.font, self.settings.text_color, self.settings.hud_outline_color
+        )
         self.hi_score_rect = self.hi_score_image.get_rect()
         self.hi_score_rect.midtop = (self.bounds.centerx, self.padding)
 
     def update_level(self):
         """Turns the current level into a rendered image."""
         level_str = f'level: {self.game_stats.level: ,.0f}'
-        self.level_image = self.font.render(level_str, True, 
-            self.settings.text_color, None)
+        self.level_image = self.render_text_with_outline(
+            level_str, self.font, self.settings.text_color, self.settings.hud_outline_color
+        )
         self.level_rect = self.level_image.get_rect()
         self.level_rect.left = self.padding
         self.level_rect.top = self.life_rect.bottom + self.padding
@@ -84,6 +89,32 @@ class HUD:
         for _ in range(self.game_stats.ships_left):
             self.screen.blit(self.life_image, (current_x, current_y))
             current_x += self.life_rect.width + self.padding
+
+    def render_text_with_outline(self, text, font, main_color, outline_color):
+        """Renders text with a colored outline."""
+        
+        outline_surface_1 = font.render(text, True, outline_color)
+        outline_surface_2 = font.render(text, True, outline_color)
+        outline_surface_3 = font.render(text, True, outline_color)
+        outline_surface_4 = font.render(text, True, outline_color)
+        
+        
+        main_surface = font.render(text, True, main_color)
+        
+        
+        w = main_surface.get_width() + 4
+        h = main_surface.get_height() + 4
+        final_surface = pygame.Surface((w, h), pygame.SRCALPHA)
+        
+        
+        final_surface.blit(outline_surface_1, (0, 2))  
+        final_surface.blit(outline_surface_2, (4, 2))  
+        final_surface.blit(outline_surface_3, (2, 0))  
+        final_surface.blit(outline_surface_4, (2, 4))  
+        
+        final_surface.blit(main_surface, (2, 2))
+        
+        return final_surface
 
     def draw(self):
         """Draw scores, level, and lives to the screen."""

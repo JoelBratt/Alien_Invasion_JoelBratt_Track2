@@ -42,7 +42,7 @@ class AlienInvasion:
         self.impact_sound = pygame.mixer.Sound(self.settings.impact_sound)
         self.impact_sound.set_volume(0.3)
         self.soundtrack_sound = pygame.mixer.Sound(self.settings.soundtrack)
-        self.soundtrack_sound.set_volume(0.02)
+        self.soundtrack_sound.set_volume(0.01)
         self.gameover_sound = pygame.mixer.Sound(self.settings.gameover)
         self.gameover_sound.set_volume(0.9)
 
