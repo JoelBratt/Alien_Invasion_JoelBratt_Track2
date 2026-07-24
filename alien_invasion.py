@@ -38,11 +38,13 @@ class AlienInvasion:
 
         pygame.mixer.init()
         self.laser_sound = pygame.mixer.Sound(self.settings.laser_sound)
-        self.laser_sound.set_volume(0.2)
+        self.laser_sound.set_volume(0.3)
         self.impact_sound = pygame.mixer.Sound(self.settings.impact_sound)
-        self.impact_sound.set_volume(0.2)
+        self.impact_sound.set_volume(0.3)
         self.soundtrack_sound = pygame.mixer.Sound(self.settings.soundtrack)
-        self.soundtrack_sound.set_volume(0.01)
+        self.soundtrack_sound.set_volume(0.02)
+        self.gameover_sound = pygame.mixer.Sound(self.settings.gameover)
+        self.gameover_sound.set_volume(0.9)
 
         self.ship = Ship(self, Arsenal(self))
         self.alien_fleet = AlienFleet(self)
@@ -54,7 +56,7 @@ class AlienInvasion:
     def run_game(self):
         """Start the main loop for the game."""
         #game loop
-        self.soundtrack_sound.play(loops=-1)
+        #self.soundtrack_sound.play(loops=-1)
         while self.running:
             self._check_events()
             if self.game_active:
@@ -98,7 +100,8 @@ class AlienInvasion:
             self._reset_level()
             sleep(0.5)
         else: 
-            #game over sound here if wanted
+            self.soundtrack_sound.stop()
+            self.gameover_sound.play()
             self.game_active = False
 
 
@@ -118,6 +121,7 @@ class AlienInvasion:
         self.ship._center_ship()
         self.game_active = True
         pygame.mouse.set_visible(False)
+        self.soundtrack_sound.play(loops=-1)
 
 
     def _update_screen(self):
