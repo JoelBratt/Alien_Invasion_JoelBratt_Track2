@@ -14,17 +14,30 @@ if TYPE_CHECKING:
 class Button:
     """Class to build buttons."""
     def __init__(self, game: 'AlienInvasion', msg):
-        """Initialize the button attributes"""
+        """Initialize the button attributes and loads the button image"""
         self.game = game
         self.screen = game.screen
         self.bounds = game.screen.get_rect()
         self.settings = game.settings
 
-        self.font = pygame.font.Font(self.settings.font_file, 
-            self.settings.button_font_size)
-        self.rect = pygame.Rect(0,0,self.settings.button_w, self.settings.button_h)
+        self.image = pygame.image.load(self.settings.button)
+        self.image = pygame.transform.scale(
+            self.image, 
+            (self.settings.button_w, self.settings.button_h)
+        )
+
+        self.rect = self.image.get_rect()
         self.rect.center = self.bounds.center
+
+        self.font = pygame.font.Font(self.settings.font_file,
+                self.settings.button_font_size)
         self._prep_msg(msg)
+
+        # self.font = pygame.font.Font(self.settings.font_file, 
+        #     self.settings.button_font_size)
+        # self.rect = pygame.Rect(0,0,self.settings.button_w, self.settings.button_h)
+        # self.rect.center = self.bounds.center
+        # self._prep_msg(msg)
 
     def _prep_msg(self, msg):
         """Turn msg into a rendered image and center text on the button."""
@@ -34,7 +47,7 @@ class Button:
 
     def draw(self):
         """Draw blank button then draw message."""
-        self.screen.fill(self.settings.button_color, self.rect)
+        self.screen.blit(self.image, self.rect)
         self.screen.blit(self.msg_image, self.msg_image_rect)
 
     def check_clicked(self, mouse_pos):
