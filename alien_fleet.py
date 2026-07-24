@@ -33,10 +33,11 @@ class AlienFleet:
         fleet_w, fleet_h = self.calculate_fleet_size(alien_w, screen_w, alien_h, screen_h)
 
         x_offset, y_offset = self.calculate_offset(alien_w, alien_h, screen_w, fleet_w, fleet_h)
-        self._create_rectangle_fleet(alien_w, alien_h, fleet_w, fleet_h, x_offset, y_offset)
+        self._create_different_fleet(alien_w, alien_h, fleet_w, fleet_h, x_offset, y_offset)
 
     def _create_rectangle_fleet(self, alien_w, alien_h, fleet_w, fleet_h, x_offset, y_offset):
-        """Populate the fleet in a grdi pattern."""
+        """Populate the fleet in a grid pattern."""
+        #not in use currently
         for row in range(fleet_h):
             for col in range(fleet_w):
                 current_x = alien_w * col + x_offset
@@ -44,6 +45,25 @@ class AlienFleet:
                 if col % 2 == 0 or row % 2 == 0:
                     continue
                 self._create_alien(current_x, current_y)
+
+    def _create_different_fleet(self, alien_w, alien_h, fleet_w, fleet_h, x_offset, y_offset):
+        """Populate the fleet in a different shape (wave)."""
+
+        for row in range(fleet_h):
+            for col in range(fleet_w):
+                if col % 2 == 0 or row % 2 == 0:
+                    continue
+                
+                v_col = col // 2
+                
+                wave_multiplier = 2 - abs(2 - (v_col % 4))
+                
+                current_x = alien_w * col + x_offset
+                current_y = alien_h * row + y_offset + (wave_multiplier * alien_h)
+                
+                self._create_alien(current_x, current_y)
+
+
 
     def calculate_offset(self, alien_w, alien_h, screen_w, fleet_w, fleet_h):
         """Calculate the starting offsets for centering the fleet."""
@@ -55,7 +75,7 @@ class AlienFleet:
         return x_offset,y_offset
 
     def calculate_fleet_size(self, alien_w, screen_w, alien_h, screen_h):
-        """Makes the number of aliends that fit in a row and the number of rows."""
+        """Makes the number of aliens that fit in a row and the number of rows."""
         fleet_w = (screen_w//alien_w)
         fleet_h = ((screen_h/2//alien_h))
 
