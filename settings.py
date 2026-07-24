@@ -24,7 +24,7 @@ class Settings:
         self.laser_sound = Path.cwd() / 'Assets' / 'sound' / 'laser2.mp3'
         self.impact_sound = Path.cwd() / 'Assets' / 'sound' / 'impactSound2.mp3'
         self.gameover = Path.cwd() / 'Assets' / 'sound' / 'gameover.mp3'
-        #soundtrack desgined by FlipXin
+        #soundtrack desgined by FlipXiN
         self.soundtrack = Path.cwd() / 'Assets' / 'sound' / 'soundtrack.mp3'
 
         self.alien_file = Path.cwd() / 'Assets' / 'images' / 'Alien1.png'
